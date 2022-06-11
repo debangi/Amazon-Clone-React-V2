@@ -61,8 +61,13 @@ export const HeaderOption = styled.div`
 `;
 export const HeaderOptionCart = styled.div`
   display: flex;
-  align-items: center;
-  padding-right: 9px;
+  a {
+    display: flex;
+    align-items: center;
+    padding-right: 9px;
+    color: #fff;
+    text-decoration: none;
+  }
 `;
 export const CartCount = styled.div`
   padding-left: 4px;

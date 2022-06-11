@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Outlet, Link } from 'react-router-dom';
 import {
   CartCount,
   Container,
@@ -19,38 +20,46 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Header = () => {
   return (
-    <Container>
-      <HeaderLogo>
-        <img src={'https://i.imgur.com/7I9Was5.png'} alt='logo' />
-      </HeaderLogo>
-      <HeaderOptionAddress>
-        <LocationOnIcon />
-        <HeaderOption>
-          <OptionLineOne>Hello,</OptionLineOne>
-          <OptionLineTwo>Select your address</OptionLineTwo>
-        </HeaderOption>
-      </HeaderOptionAddress>
-      <HeaderSearch>
-        <HeaderSearchInput type='text' />
-        <HeaderSearchIconContainer>
-          <SearchIcon />
-        </HeaderSearchIconContainer>
-      </HeaderSearch>
-      <HeaderNavItems>
-        <HeaderOption>
-          <OptionLineOne>Hello, Debangi</OptionLineOne>
-          <OptionLineTwo>Account & Lists</OptionLineTwo>
-        </HeaderOption>
-        <HeaderOption>
-          <OptionLineOne>Returns</OptionLineOne>
-          <OptionLineTwo>& Orders</OptionLineTwo>
-        </HeaderOption>
-        <HeaderOptionCart>
-          <ShoppingCartIcon />
-          <CartCount>1</CartCount>
-        </HeaderOptionCart>
-      </HeaderNavItems>
-    </Container>
+    <Fragment>
+      <Container>
+        <HeaderLogo>
+          <Link to='/'>
+            <img src={'https://i.imgur.com/7I9Was5.png'} alt='logo' />
+          </Link>
+        </HeaderLogo>
+        <HeaderOptionAddress>
+          <LocationOnIcon />
+          <HeaderOption>
+            <OptionLineOne>Hello,</OptionLineOne>
+            <OptionLineTwo>Select your address</OptionLineTwo>
+          </HeaderOption>
+        </HeaderOptionAddress>
+        <HeaderSearch>
+          <HeaderSearchInput type='text' />
+          <HeaderSearchIconContainer>
+            <SearchIcon />
+          </HeaderSearchIconContainer>
+        </HeaderSearch>
+        <HeaderNavItems>
+          <HeaderOption>
+            <OptionLineOne>Hello, Debangi</OptionLineOne>
+            <OptionLineTwo>Account & Lists</OptionLineTwo>
+          </HeaderOption>
+          <HeaderOption>
+            <OptionLineOne>Returns</OptionLineOne>
+            <OptionLineTwo>& Orders</OptionLineTwo>
+          </HeaderOption>
+          <HeaderOptionCart>
+            <Link to='/cart'>
+              <ShoppingCartIcon />
+              <CartCount>1</CartCount>
+            </Link>
+          </HeaderOptionCart>
+        </HeaderNavItems>
+      </Container>
+
+      <Outlet />
+    </Fragment>
   );
 };
 
