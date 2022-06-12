@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   gap: 16px;
   justify-content: space-between;
+  border-bottom: 1px solid #ddd;
 `;
 export const ImageContainer = styled.div`
   width: 180px;
@@ -32,8 +33,20 @@ export const CartItemInfoTop = styled.div`
 export const CartItemInfoBottom = styled.div`
   display: flex;
   margin-top: 4px;
+  align-items: center;
 `;
-export const CartItemQuantityContainer = styled.div``;
+export const CartItemQuantityContainer = styled.div`
+  input {
+    width: 30px;
+    border-radius: 7px;
+    background-color: #f0f2f2;
+    padding: 8px;
+    box-shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
+    :focus {
+      outline: none;
+    }
+  }
+`;
 export const CartItemDeleteContainer = styled.div`
   color: #007185;
   margin-left: 16px;

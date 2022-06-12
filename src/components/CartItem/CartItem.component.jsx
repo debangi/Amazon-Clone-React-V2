@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   CartItemDeleteContainer,
   CartItemInfo,
@@ -13,6 +13,8 @@ import {
 } from '../CartItem/CartItem.styles';
 
 const CartItem = ({ id, item }) => {
+  const [quantity, setQuantity] = useState(item.quantity);
+
   console.log(item);
   return (
     <Container>
@@ -24,7 +26,13 @@ const CartItem = ({ id, item }) => {
           <h2>{item.name}</h2>
         </CartItemInfoTop>
         <CartItemInfoBottom>
-          <CartItemQuantityContainer>{item.quantity}</CartItemQuantityContainer>
+          <CartItemQuantityContainer>
+            <input
+              type='number'
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+          </CartItemQuantityContainer>
           <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
         </CartItemInfoBottom>
       </CartItemInfo>
