@@ -13,6 +13,7 @@ import {
 } from '../CartItem/CartItem.styles';
 
 const CartItem = ({ id, item }) => {
+  console.log(item);
   return (
     <Container>
       <ImageContainer>

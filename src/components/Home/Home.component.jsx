@@ -23,6 +23,7 @@ const Home = () => {
         {products.map(({ id, product }) => (
           <Product
             key={id}
+            id={id}
             title={product.name}
             maxPrice={product.maxPrice}
             offerPrice={product.offerPrice}

@@ -40,6 +40,7 @@ export const AddToCartButton = styled.button`
   background-color: #f0c14b;
   border: 2px solid #a88734;
   border-radius: 2px;
+  cursor: pointer;
 `;
 export const ActionSection = styled.div`
   margin-top: 12px;

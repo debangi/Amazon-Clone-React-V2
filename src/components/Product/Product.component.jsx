@@ -10,8 +10,33 @@ import {
   PriceContainer,
   MaxPrice,
 } from './Product.styles';
+// import firebase from 'firebase/compat/app';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase-config';
 
-const Product = ({ title, maxPrice, offerPrice, rating, imageUrl }) => {
+const Product = ({ id, title, maxPrice, offerPrice, rating, imageUrl }) => {
+  const addToCart = async () => {
+    console.log(id, title);
+    const itemDocRef = doc(db, 'cartItems', `${id}`);
+    // const itemSnapshot = await getDoc(itemDocRef);
+    getDoc(itemDocRef).then((doc) => {
+      console.log(doc);
+      if (doc.data()) {
+        console.log(doc.data());
+        updateDoc(itemDocRef, { quantity: doc.data().quantity + 1 });
+      } else {
+        const payload = {
+          name: title,
+          imageUrl: imageUrl,
+          maxPrice: maxPrice,
+          offerPrice: offerPrice,
+          quantity: 1,
+        };
+        setDoc(itemDocRef, payload);
+      }
+    });
+  };
+
   return (
     <Container>
       <Title>{title}</Title>
@@ -28,7 +53,7 @@ const Product = ({ title, maxPrice, offerPrice, rating, imageUrl }) => {
       </Rating>
       <Image src={imageUrl} />
       <ActionSection>
-        <AddToCartButton>Add to Cart</AddToCartButton>
+        <AddToCartButton onClick={addToCart}>Add to Cart</AddToCartButton>
       </ActionSection>
     </Container>
   );
