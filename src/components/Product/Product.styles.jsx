@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex: 1;
   padding: 20px;
   margin: 10px;
-  max-height: 400px;
+  max-height: 600px;
 
   display: flex;
   flex-direction: column;
@@ -30,7 +30,8 @@ export const Rating = styled.div`
   display: flex;
 `;
 export const Image = styled.img`
-  max-height: 200px;
+  max-height: 400px;
+  max-width: 100%;
   object-fit: contain;
 `;
 export const AddToCartButton = styled.button`
