@@ -3,10 +3,10 @@ import CartItems from '../CartItems/CartItems.component';
 import CartTotal from '../CartTotal/CartTotal.component';
 import { Container } from './Cart.styles';
 
-const Cart = () => {
+const Cart = ({ cartItems }) => {
   return (
     <Container>
-      <CartItems />
+      <CartItems cartItems={cartItems} />
       <CartTotal />
     </Container>
   );

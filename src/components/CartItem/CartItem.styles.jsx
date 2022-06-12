@@ -39,7 +39,13 @@ export const CartItemDeleteContainer = styled.div`
   margin-left: 16px;
   cursor: pointer;
 `;
-export const CartItemPrice = styled.div`
+export const CartItemPriceContainer = styled.div``;
+export const CartItemMaxPrice = styled.div`
+  text-decoration: line-through;
+  font-size: 18px;
+`;
+export const CartItemOfferPrice = styled.div`
   font-size: 18px;
   font-weight: 700;
+  color: red;
 `;

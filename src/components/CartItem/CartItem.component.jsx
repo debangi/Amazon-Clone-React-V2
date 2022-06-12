@@ -4,31 +4,33 @@ import {
   CartItemInfo,
   CartItemInfoBottom,
   CartItemInfoTop,
-  CartItemPrice,
+  CartItemMaxPrice,
+  CartItemOfferPrice,
+  CartItemPriceContainer,
   CartItemQuantityContainer,
   Container,
   ImageContainer,
 } from '../CartItem/CartItem.styles';
 
-const CartItem = () => {
+const CartItem = ({ id, item }) => {
   return (
     <Container>
       <ImageContainer>
-        <img
-          src='https://m.media-amazon.com/images/I/71TPda7cwUL._SL1500_.jpg'
-          alt=''
-        />
+        <img src={item.imageUrl} alt={item.name} />
       </ImageContainer>
       <CartItemInfo>
         <CartItemInfoTop>
-          <h2>New Apple iPad Pro</h2>
+          <h2>{item.name}</h2>
         </CartItemInfoTop>
         <CartItemInfoBottom>
-          <CartItemQuantityContainer>5</CartItemQuantityContainer>
+          <CartItemQuantityContainer>{item.quantity}</CartItemQuantityContainer>
           <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
         </CartItemInfoBottom>
       </CartItemInfo>
-      <CartItemPrice>₹23434</CartItemPrice>
+      <CartItemPriceContainer>
+        <CartItemMaxPrice>₹{item.maxPrice}</CartItemMaxPrice>
+        <CartItemOfferPrice>₹{item.offerPrice}</CartItemOfferPrice>
+      </CartItemPriceContainer>
     </Container>
   );
 };
