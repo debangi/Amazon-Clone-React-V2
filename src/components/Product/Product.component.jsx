@@ -2,20 +2,31 @@ import React from 'react';
 import {
   Container,
   Title,
-  Price,
+  OfferPrice,
   Rating,
   Image,
   AddToCartButton,
   ActionSection,
+  PriceContainer,
+  MaxPrice,
 } from './Product.styles';
 
-const Product = () => {
+const Product = ({ title, maxPrice, offerPrice, rating, imageUrl }) => {
   return (
     <Container>
-      <Title>Ipad pro</Title>
-      <Price>₹324</Price>
-      <Rating>⭐⭐⭐⭐⭐</Rating>
-      <Image src='https://m.media-amazon.com/images/I/81Y5WuARqpS._SL1500_.jpg' />
+      <Title>{title}</Title>
+      <PriceContainer>
+        <MaxPrice>₹{maxPrice}</MaxPrice>
+        <OfferPrice>₹{offerPrice}</OfferPrice>
+      </PriceContainer>
+      <Rating>
+        {Array(rating)
+          .fill()
+          .map((rating) => (
+            <p>⭐</p>
+          ))}
+      </Rating>
+      <Image src={imageUrl} />
       <ActionSection>
         <AddToCartButton>Add to Cart</AddToCartButton>
       </ActionSection>

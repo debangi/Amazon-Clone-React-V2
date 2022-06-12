@@ -12,11 +12,23 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 export const Title = styled.span``;
-export const Price = styled.span`
+export const PriceContainer = styled.div`
+  display: flex;
+  gap: 5px;
+`;
+export const MaxPrice = styled.span`
+  text-decoration: line-through;
   font-weight: 500;
   margin-top: 3px;
 `;
-export const Rating = styled.div``;
+export const OfferPrice = styled.span`
+  font-weight: bolder;
+  margin-top: 3px;
+  color: #ec1a48;
+`;
+export const Rating = styled.div`
+  display: flex;
+`;
 export const Image = styled.img`
   max-height: 200px;
   object-fit: contain;
