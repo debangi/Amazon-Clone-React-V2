@@ -15,7 +15,6 @@ import {
 const CartItem = ({ id, item }) => {
   const [quantity, setQuantity] = useState(item.quantity);
 
-  console.log(item);
   return (
     <Container>
       <ImageContainer>

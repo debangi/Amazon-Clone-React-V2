@@ -18,11 +18,10 @@ function App() {
     });
   }, []);
 
-  console.log(cartItems);
   return (
     <Container>
       <Routes>
-        <Route path='/' element={<Header />}>
+        <Route path='/' element={<Header cartItems={cartItems} />}>
           <Route index element={<Home />} />
           <Route path='/cart' element={<Cart cartItems={cartItems} />} />
         </Route>

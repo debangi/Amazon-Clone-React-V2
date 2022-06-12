@@ -3,7 +3,6 @@ import { Container, ItemsContainer, Title } from './CartItems.styles';
 import CartItem from '../CartItem/CartItem.component';
 
 const CartItems = ({ cartItems }) => {
-  console.log(cartItems);
   return (
     <Container>
       <Title>Shopping Cart</Title>

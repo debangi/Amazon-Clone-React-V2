@@ -18,7 +18,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const Header = () => {
+const Header = ({ cartItems }) => {
+  const getCount = () => {
+    let count = 0;
+    cartItems.forEach((item) => {
+      count += item.product.quantity;
+    });
+    return count;
+  };
+
   return (
     <Fragment>
       <Container>
@@ -52,7 +60,7 @@ const Header = () => {
           <HeaderOptionCart>
             <Link to='/cart'>
               <ShoppingCartIcon />
-              <CartCount>1</CartCount>
+              <CartCount>{getCount()}</CartCount>
             </Link>
           </HeaderOptionCart>
         </HeaderNavItems>
