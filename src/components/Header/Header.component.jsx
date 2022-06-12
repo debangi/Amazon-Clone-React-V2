@@ -18,7 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const Header = ({ cartItems }) => {
+const Header = ({ cartItems, user }) => {
   const getCount = () => {
     let count = 0;
     cartItems.forEach((item) => {
@@ -50,7 +50,7 @@ const Header = ({ cartItems }) => {
         </HeaderSearch>
         <HeaderNavItems>
           <HeaderOption>
-            <OptionLineOne>Hello, Debangi</OptionLineOne>
+            <OptionLineOne>Hello, {user.name}</OptionLineOne>
             <OptionLineTwo>Account & Lists</OptionLineTwo>
           </HeaderOption>
           <HeaderOption>
