@@ -7,7 +7,6 @@ import { Fragment, useEffect, useState } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { auth, db } from './firebase-config';
 import Login from './components/Login/Login.component';
-import { signOut } from 'firebase/auth';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
@@ -26,7 +25,7 @@ function App() {
     localStorage.removeItem('user');
     setUser(null);
   };
-  console.log(user);
+
   return (
     <Fragment>
       {!user ? (
