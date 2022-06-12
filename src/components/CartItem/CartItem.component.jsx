@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   CartItemDeleteContainer,
   CartItemInfo,
@@ -11,9 +11,27 @@ import {
   Container,
   ImageContainer,
 } from '../CartItem/CartItem.styles';
+import { doc, updateDoc, getDoc, deleteDoc } from 'firebase/firestore';
+import { db } from '../../firebase-config';
 
 const CartItem = ({ id, item }) => {
-  const [quantity, setQuantity] = useState(item.quantity);
+  const deleteItem = (e) => {
+    e.preventDefault();
+    const itemDocRef = doc(db, 'cartItems', `${id}`);
+    deleteDoc(itemDocRef);
+  };
+
+  let options = [];
+  for (let i = 1; i < Math.max(item.quantity + 1, 20); i++) {
+    options.push(<option value={i}> Qty: {i}</option>);
+  }
+
+  const changeQuantity = (newQuantity) => {
+    const itemDocRef = doc(db, 'cartItems', `${id}`);
+    getDoc(itemDocRef).then((doc) => {
+      updateDoc(itemDocRef, { quantity: parseInt(newQuantity) });
+    });
+  };
 
   return (
     <Container>
@@ -28,11 +46,14 @@ const CartItem = ({ id, item }) => {
           <CartItemQuantityContainer>
             <input
               type='number'
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
+              value={item.quantity}
+              min='1'
+              onChange={(e) => changeQuantity(e.target.value)}
             />
           </CartItemQuantityContainer>
-          <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
+          <CartItemDeleteContainer onClick={deleteItem}>
+            Delete
+          </CartItemDeleteContainer>
         </CartItemInfoBottom>
       </CartItemInfo>
       <CartItemPriceContainer>

@@ -15,7 +15,6 @@ const Home = () => {
     });
   }, []);
 
-  console.log(products);
   return (
     <Container>
       <Banner></Banner>

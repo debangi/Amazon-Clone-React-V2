@@ -18,11 +18,8 @@ const Product = ({ id, title, maxPrice, offerPrice, rating, imageUrl }) => {
   const addToCart = async () => {
     console.log(id, title);
     const itemDocRef = doc(db, 'cartItems', `${id}`);
-    // const itemSnapshot = await getDoc(itemDocRef);
     getDoc(itemDocRef).then((doc) => {
-      console.log(doc);
       if (doc.data()) {
-        console.log(doc.data());
         updateDoc(itemDocRef, { quantity: doc.data().quantity + 1 });
       } else {
         const payload = {
