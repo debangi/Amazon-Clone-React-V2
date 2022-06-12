@@ -5,11 +5,12 @@ import Home from './components/Home/Home.component';
 import styled from 'styled-components';
 import { Fragment, useEffect, useState } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from './firebase-config';
+import { auth, db } from './firebase-config';
 import Login from './components/Login/Login.component';
+import { signOut } from 'firebase/auth';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -20,6 +21,12 @@ function App() {
     });
   }, []);
 
+  const signOut = async () => {
+    await signOut(auth);
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+  console.log(user);
   return (
     <Fragment>
       {!user ? (
@@ -29,7 +36,9 @@ function App() {
           <Routes>
             <Route
               path='/'
-              element={<Header user={user} cartItems={cartItems} />}
+              element={
+                <Header signOut={signOut} user={user} cartItems={cartItems} />
+              }
             >
               <Route index element={<Home />} />
               <Route path='/cart' element={<Cart cartItems={cartItems} />} />

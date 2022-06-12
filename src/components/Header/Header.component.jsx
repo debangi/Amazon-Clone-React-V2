@@ -18,7 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const Header = ({ cartItems, user }) => {
+const Header = ({ cartItems, user, signOut }) => {
   const getCount = () => {
     let count = 0;
     cartItems.forEach((item) => {
@@ -26,7 +26,6 @@ const Header = ({ cartItems, user }) => {
     });
     return count;
   };
-
   return (
     <Fragment>
       <Container>
